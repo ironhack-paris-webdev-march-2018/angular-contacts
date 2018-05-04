@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -11,6 +12,8 @@ import { ContactDetailsComponent } from './contact-details/contact-details.compo
 import { CounterUiComponent } from './counter-ui/counter-ui.component';
 import { CounterService } from './counter-ui/counter.service';
 import { ContactService } from './contact-list/contact.service';
+import { ChuckComponent } from './chuck/chuck.component';
+import { IcndbService } from './api/icndb.service';
 
 
 @NgModule({
@@ -20,15 +23,18 @@ import { ContactService } from './contact-list/contact.service';
     ContactListComponent,
     NotFoundComponent,
     ContactDetailsComponent,
-    CounterUiComponent
+    CounterUiComponent,
+    ChuckComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     CounterService,
-    ContactService
+    ContactService,
+    IcndbService
   ],
   bootstrap: [AppComponent]
 })
