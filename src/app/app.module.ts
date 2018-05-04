@@ -8,6 +8,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ContactDetailsComponent } from './contact-details/contact-details.component';
+import { CounterUiComponent } from './counter-ui/counter-ui.component';
+import { CounterService } from './counter-ui/counter.service';
 
 
 @NgModule({
@@ -16,13 +18,14 @@ import { ContactDetailsComponent } from './contact-details/contact-details.compo
     LandingPageComponent,
     ContactListComponent,
     NotFoundComponent,
-    ContactDetailsComponent
+    ContactDetailsComponent,
+    CounterUiComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [CounterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

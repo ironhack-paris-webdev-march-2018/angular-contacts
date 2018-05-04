@@ -5,6 +5,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ContactDetailsComponent } from './contact-details/contact-details.component';
+import { CounterUiComponent } from './counter-ui/counter-ui.component';
 
 const routes: Routes = [
   // router.get('/', ...
@@ -15,6 +16,9 @@ const routes: Routes = [
 
   // router.get('/contact/:blahId', ...
   { path: 'contact/:blahId', component: ContactDetailsComponent },
+
+  // router.get('/counter', ...
+  { path: 'counter', component: CounterUiComponent },
 
   // Handle all other URLs (MUST BE LAST)
   { path: '**', component: NotFoundComponent }
