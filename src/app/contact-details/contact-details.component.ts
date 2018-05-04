@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Contact, contactList } from '../contact-list/contact-data';
+import { ContactService } from '../contact-list/contact.service';
 
 @Component({
   selector: 'app-contact-details',
@@ -13,7 +14,11 @@ export class ContactDetailsComponent implements OnInit {
   contactId: string;
   contactInfo: Contact;
 
-  constructor(private reqThang: ActivatedRoute) { }
+  constructor(
+    private reqThang: ActivatedRoute,
+    public contactTruc: ContactService,
+    private resThang: Router
+  ) { }
 
   ngOnInit() {
     this.reqThang.paramMap
@@ -21,19 +26,21 @@ export class ContactDetailsComponent implements OnInit {
                   // { path: 'contact/:blahId', ... }
         this.contactId = myParams.get('blahId');
                          // req.params.blahId
-        this.fetchContactInfo();
+
+        this.contactInfo = this.contactTruc.getContact(this.contactId);
       });
   }
 
-  fetchContactInfo() {
-    contactList.forEach((oneContact) => {
-      if (oneContact.id === this.contactId) {
-        this.contactInfo = oneContact;
-      }
-    });
+  confirmDelete() {
+    const { name } = this.contactInfo;
+    // const name = this.contactInfo.name;
+
+    const isOkay = confirm(`Are you sure you want to delete ${name}?`);
+
+    if (isOkay) {
+      this.contactTruc.deleteContact(this.contactId);
+      this.resThang.navigateByUrl('/contacts');
+    }             // res.redirect('/contacts')
   }
-    // Pro way
-    // this.contactInfo =
-    //   contactList.find(contact => contact.id === this.contactId);
 
 }

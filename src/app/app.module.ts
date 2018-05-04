@@ -10,6 +10,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ContactDetailsComponent } from './contact-details/contact-details.component';
 import { CounterUiComponent } from './counter-ui/counter-ui.component';
 import { CounterService } from './counter-ui/counter.service';
+import { ContactService } from './contact-list/contact.service';
 
 
 @NgModule({
@@ -25,7 +26,10 @@ import { CounterService } from './counter-ui/counter.service';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [CounterService],
+  providers: [
+    CounterService,
+    ContactService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
